@@ -1,7 +1,5 @@
 FROM golang:latest
 
-ENV MYSQL_HOST="heroes-mysql"
-
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
