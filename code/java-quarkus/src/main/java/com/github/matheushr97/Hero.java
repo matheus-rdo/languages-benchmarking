@@ -8,21 +8,12 @@ import javax.persistence.Entity;
 @Entity(name = "heroes")
 public class Hero extends PanacheEntity {
 
-
     private String name;
 
     @Column(name = "special_powers")
     private String specialPowers;
 
     private String publisher;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
