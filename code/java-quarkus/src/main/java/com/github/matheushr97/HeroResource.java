@@ -13,7 +13,6 @@ import java.util.List;
 public class HeroResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public List<Hero> hello() {
         List<Hero> heroes = Hero.listAll();
         return heroes;
