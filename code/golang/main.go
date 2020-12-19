@@ -28,6 +28,7 @@ func main() {
 
 	datasource := fmt.Sprintf("root:superheroes@tcp(%s:3306)/heroes", host)
 	db, err := sql.Open("mysql", datasource)
+	db.SetMaxIdleConns(100)
 	if err != nil {
 		panic(err)
 	}
@@ -48,6 +49,7 @@ func getHeroes() []Hero {
 	if err != nil {
 		panic(err)
 	}
+	defer rows.Close()
 	heroes := []Hero{}
 	for rows.Next() {
 		var h Hero
