@@ -1,0 +1,29 @@
+version: '2.1'
+
+networks:
+  heroes_network:
+    name: heroes_network
+    driver: bridge
+
+services:
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
+    networks:
+      - heroes_network      
+    restart: always
+    ports:
+      - "8081:8080"      
+  database:
+    build: ./database    
+    container_name: heroes-mysql
+    networks:
+      - heroes_network       
+    depends_on: 
+      - cadvisor    

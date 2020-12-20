@@ -1,5 +1,13 @@
 # Programming languages benchmarks
 
+## Set up infrastructure
+To set up database, cAdvisor and docker network, execute the following command:  
+```shell script
+
+docker-compose up -d
+
+```  
+
 ## Tools used
 
 - Apache benchmark
